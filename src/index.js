@@ -1,10 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import { SearchContextProvider } from "./context/SearchContext"
+import { AuthContextProvider } from "./context/AuthContext"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const ContextWrapper = ({ children }) => {
+  return (
+    <AuthContextProvider>
+      <SearchContextProvider>{children}</SearchContextProvider>
+    </AuthContextProvider>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ContextWrapper>
+      <App />
+    </ContextWrapper>
   </React.StrictMode>
-);
+)
