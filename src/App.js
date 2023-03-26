@@ -4,20 +4,15 @@ import List from "./pages/list/List"
 import Single from "./pages/single/Single"
 import New from "./pages/new/New"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import {
-  productInputs,
-  hotelInputs,
-  roomInputs,
-  userInputs,
-} from "./formSource"
+import { productInputs, userInputs } from "./formSource"
 import "./style/dark.scss"
 import { useContext } from "react"
 import { DarkModeContext } from "./context/darkModeContext"
 import { AuthContext } from "./context/AuthContext"
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource"
-import React from "react"
-import NewRoom from "./pages/newRoom/NewRoom"
 import NewHotel from "./pages/newHotel/NewHotel"
+import NewRoom from "./pages/newRoom/NewRoom"
+import React from "react"
 
 function App() {
   const { darkMode } = useContext(DarkModeContext)
@@ -37,6 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
+            <Route path="login" element={<Login />} />
             <Route
               index
               element={
@@ -45,7 +41,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="login" element={<Login />} />
             <Route path="users">
               <Route
                 index
